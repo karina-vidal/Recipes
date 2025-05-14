@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { InjectSessionInterceptor } from '@core/interceptors/inject-session.interceptor';
+import { EditRecipeComponent } from './modules/edit-recipe/pages/edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditRecipeComponent
   ],
   imports: [
     BrowserModule,

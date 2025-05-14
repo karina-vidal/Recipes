@@ -13,27 +13,19 @@ import { AuthService } from '@modules/auth/services/auth.service';
 @Injectable()
 export class InjectSessionInterceptor implements HttpInterceptor {
   private readonly URL = environment.api
-  constructor(private cookieService: CookieService, private authService: AuthService) { }
+  constructor(private cookieService: CookieService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     try {
       const token = this.cookieService.get('token')
-      //const token = this.authService.getToken();
-      //if(!token){
-        //console.log('Token aun no disponible')
-        //return EMPTY;
-      //}
-      let newRequest = request
-      newRequest = request.clone(
-        {
-          setHeaders: {
-            authorization: `Bearer ${token}`
-          }
+      if(request.url.includes('auth')){
+        return next.handle(request)
+      }else{
+        const newResponse = request.clone({
+          url: `${request.url}?auth=${token}`
+        })
+        return next.handle(newResponse)
         }
-      )
-      console.log('holi', token)
-      console.log('holi2 ', newRequest)
-      return next.handle(newRequest);
 
     } catch (e) {
       console.log('🔴🔴🔴 Ojito error', e)

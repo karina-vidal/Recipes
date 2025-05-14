@@ -1,1 +1,21 @@
-<p>ingredients-page works!</p>
+<div >
+    <h2>LISTA DE INGREDIENTES</h2>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ingredient of ingredientsList; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ ingredient.name }}</td>
+                    <td>{{ ingredient.amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

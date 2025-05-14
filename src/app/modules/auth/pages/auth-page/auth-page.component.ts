@@ -50,5 +50,8 @@ export class AuthPageComponent implements OnInit{
       }
     }) 
   }
-
+  //ngOnDestroy(): void {
+    //this.listObservers$.forEach( u => u.unsubscribe())
+    //console.log('BOOMMMMM media-playes.component.tssssssss!');
+  //}
 }

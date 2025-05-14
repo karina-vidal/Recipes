@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import(`@modules/new-recipe/new-recipe.module`).then(m=>m.NewRecipeModule)
   },
   {
+    path: 'recipe/edit',
+    loadChildren: () => import(`@modules/edit-recipe/edit-recipe.module`).then(m=>m.EditRecipeModule)
+  },
+  {
     path: 'ingredients',
     loadChildren: () => import(`@modules/ingredients/ingredients.module`).then(m=>m.IngredientsModule)
   },

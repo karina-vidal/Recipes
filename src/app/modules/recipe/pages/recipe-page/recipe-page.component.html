@@ -1,25 +1,23 @@
 
 <div class="recipe-page">
     <h1>LISTA DE RECETAS</h1>
-    <div class="m-3">
-        <input type="text" placeholder="Buscar receta por nombre" style="width: 16rem;">
-        <br><br>
+    <div class="search">
+        <input (ngModelChange)="callSearch($event)" [(ngModel)]="src" type="text" placeholder="Buscar receta por nombre" style="width: 16rem;">
+        
     </div>
-    <div class="m-3 card-grid">
-        <div class="m-3">
-            <ul class="card-list">
-                <li [routerLink]="item.router" *ngFor="let item of mainMenu.defaultOptions" class="card add-card">
-                    <div class="list-wrapper-item">
-                        <i [ngClass]="['uil',item.icon]"></i>
-                        <p>{{item.name}}</p>
-                    </div>
-                </li>
-                <li *ngFor="let recipe of recipeList">
-                    <app-recipe-card [recipe]="recipe"></app-recipe-card>
-                    <br>
-                </li>
-            </ul>
-        </div>
+    <div class="card-grid">
+        <ul class="card-list">
+            <li [routerLink]="item.router" *ngFor="let item of mainMenu.defaultOptions" class="card add-card">
+                <div class="list-wrapper-item">
+                    <i [ngClass]="['uil',item.icon]"></i>
+                    <p>{{item.name}}</p>
+                </div>
+            </li>
+            <div class="recipeList" *ngFor="let recipe of recipeList">
+                <app-recipe-card [recipe]="recipe" ></app-recipe-card>
+                
+            </div>
+        </ul>
     </div>
 </div>
 

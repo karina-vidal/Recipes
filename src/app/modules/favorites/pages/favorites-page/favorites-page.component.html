@@ -1,1 +1,7 @@
-<p>favorite works!!</p>
+<div>
+    <br>
+    <h1>Mis Recetas favoritas</h1>
+    <div class="empty" *ngIf="favorites.length === 0"> No tiene recetas favoritas aún. </div>
+    <br>
+    <app-recipe-card *ngFor="let recipe of favorites"></app-recipe-card>
+</div>

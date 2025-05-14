@@ -1,4 +1,5 @@
 export interface IngredientModel{
+    _id?:string;
     name: string;
-    count: number;
+    amount: number;
 }

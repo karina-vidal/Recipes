@@ -1,24 +1,16 @@
-<div class="recipe-card">
-    <div class="" >
-        <a href="javascript:void(0)" class="icon-overlay">
-            <i class="uil uil-heart"></i>
-        </a>
-        <a href="/recipes/edit/68181dd1170c8983f665359f">
-            <img [src]="recipe.imagePath" [alt]="recipe.name" class="" > 
-        </a>
+<div class="card">
+    <div class="img-conteiner">
+        <img [src]="recipe.imagePath" [alt]="recipe.name" class="card-img" /> 
+        <button
+        (click)="addFavoritesRecipe(recipe)" 
+        [ngClass]="isFavorite ? 'uit uit-heart' : 'uil uil-heart'"></button>
     </div>
-    <div class="card-body pb-0">
-        <h3>{{recipe.name}}</h3>
-    </div>
-    <div class="actions" style="width: 16rem; height: 4rem;">
-        <a class="btn button mx-1" href="/recipes/edit/68181dd1170c8983f665359f">
-            <i class="uil uil-eye"></i>
-        </a>
-        <a class="btn button mx-1" href="/recipes/edit/68181dd1170c8983f665359f?isEdit=true">
-            <i class="uil uil-pen"></i>
-        </a>
-        <a class="btn button mx-1" href="">
-            <i class="uil uil-trash-alt"></i>
-        </a>
+    <h3>{{recipe.name}}</h3>
+    <div class="actions">
+        <li [routerLink]="item.router" *ngFor="let item of mainMenu.options">
+            <div class="list-wrapper-item">
+                <i [ngClass]="['uil',item.icon]"></i>
+            </div>
+        </li>
     </div>
 </div>

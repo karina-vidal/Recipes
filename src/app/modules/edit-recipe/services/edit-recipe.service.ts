@@ -1,17 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IngredientModel } from '@core/models/ingredient.model';
-import { RecipeModel } from '@core/models/recipes.model';
-import { count } from 'console';
-import { CookieService } from 'ngx-cookie-service';
 import { catchError, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewRecipeService {
+export class EditRecipeService {
   private readonly URL = environment.api
+  private id: string = ''
   
   constructor(private httpClient: HttpClient) { }
   
@@ -19,8 +16,8 @@ export class NewRecipeService {
     console.log('pasa por el servicio la receta: ', name, description, img, nameIngredient, number)
   }
 
-  addRecipe$(nameRecipe: string, description: string, img: string, nameIngredient: string,
-     number: number): Observable<any>{
+  editRecipe$(nameRecipe: string, description: string, img: string, nameIngredient: string,
+    number: number): Observable<any>{
     const dataNewRecipe = {
       nameRecipe: nameRecipe, description, img,
       ingredients: [
@@ -28,7 +25,8 @@ export class NewRecipeService {
         {count: number} 
       ]
     };
-    return this.httpClient.put(`${this.URL}/recipes/add`, dataNewRecipe)
+    //{{url}}/api/recipes/edit/6408ed4a95b4d2f23c615b3c?auth={{token}}
+    return this.httpClient.put(`${this.URL}/recipes/edit/${this.id}`, dataNewRecipe)
     .pipe(
       catchError((err) => {
         const { status, statusText } = err;
